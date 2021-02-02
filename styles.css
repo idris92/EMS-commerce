@@ -24,6 +24,7 @@ ul {
 a {
 	text-decoration: none;
 }
+
 li {
 	list-style-type: none;
 	margin: 30px 30px;
@@ -32,6 +33,11 @@ li {
 		sans-serif;
 	font-weight: 500;
 	font-size: 25px;
+}
+
+li:hover {
+	color: #ff7a00;
+	font-size: 26px;
 }
 .brand-button {
 	display: flex;
@@ -79,6 +85,7 @@ li {
 	margin: 5px auto;
 	border-radius: 12px;
 }
+
 .shop-now p {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 30px;
@@ -89,17 +96,22 @@ li {
 .shop-now a {
 	color: #fff;
 }
+.shop-now a:hover {
+	/* color: rgba(255, 255, 255, 0.7); */
+	font-size: 32px;
+}
 
 /* About Section */
 
 .about {
 	background-color: #000;
 	color: #fff;
+	margin-top: 85px;
 }
 .about p {
 	width: 80%;
 	margin: 35px auto 0;
-	padding: 80px 20px;
+	padding: 120px 20px;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 40px;
 }
@@ -147,6 +159,10 @@ button {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 25px;
 	font-weight: 700;
+}
+.items a:hover {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 27px;
 }
 
 /* Footer section */
