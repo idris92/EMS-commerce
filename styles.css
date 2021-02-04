@@ -210,3 +210,38 @@ button {
 	width: 15%;
 	padding: 105px 0;
 }
+
+/* Mobile Responsiveness */
+
+@media screen and (min-width: 375px) and (max-width: 744px) {
+	.intro-body {
+		display: block;
+	}
+	.intro-body h1 {
+		text-align: center;
+		margin-top: 50px;
+	}
+	.items {
+		display: block;
+	}
+	.items p {
+		font-size: 40px;
+	}
+	.items img {
+		width: 400px;
+	}
+}
+
+@media all and (min-width: 745px) and (max-width: 1065px) {
+	.intro-body {
+		display: block;
+	}
+	.intro-body h1 {
+		text-align: center;
+		margin-top: 50px;
+	}
+	.items {
+		display: grid;
+		grid-template-columns: repeat(2, 200px);
+	}
+}
