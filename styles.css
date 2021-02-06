@@ -8,6 +8,7 @@ body {
 	background-color: #ffe9d6;
 	color: black;
 	text-align: center;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Navigation Section */
@@ -29,8 +30,6 @@ li {
 	list-style-type: none;
 	margin: 30px 30px;
 	color: black;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
-		sans-serif;
 	font-weight: 500;
 	font-size: 25px;
 }
@@ -39,7 +38,7 @@ li:hover {
 	color: #ff7a00;
 	font-size: 26px;
 }
-.brand-button {
+.cart-button {
 	display: flex;
 	width: 120px;
 	background-color: #ff7a00;
@@ -48,10 +47,10 @@ li:hover {
 	margin: auto 10px;
 	padding: 5px;
 }
-.brand-button img {
+.cart-button img {
 	padding: 0 10px;
 }
-.brand-button p {
+.cart-button p {
 	color: white;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: 400;
@@ -67,7 +66,6 @@ li:hover {
 }
 .intro-body h1 {
 	color: #ff7a00;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 65px;
 	font-weight: 900;
 	text-align: left;
@@ -89,7 +87,6 @@ li:hover {
 }
 
 .shop-now .shop-link {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 30px;
 	font-weight: 500;
 	position: absolute;
@@ -120,7 +117,6 @@ li:hover {
 	width: 80%;
 	margin: 35px auto 0;
 	padding: 120px 20px;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 40px;
 }
 
@@ -151,7 +147,6 @@ li:hover {
 }
 .gadgets h2 {
 	text-align: center;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 70px;
 	font-weight: 900;
 	margin: 30px 0;
@@ -167,7 +162,6 @@ li:hover {
 }
 .items p {
 	text-align: center;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 40px;
 	font-weight: 700;
 	margin: 10px 0;
@@ -184,7 +178,6 @@ button {
 }
 .items a {
 	color: #000;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 25px;
 	font-weight: 700;
 }
@@ -201,7 +194,6 @@ button {
 	justify-content: space-evenly;
 }
 .footer p {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 25px;
 	font-weight: 400;
 	padding: 115px 0;
@@ -209,6 +201,76 @@ button {
 .footer img {
 	width: 15%;
 	padding: 105px 0;
+}
+
+/* Modal Section */
+
+.bg-modal {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}
+.modal-content {
+	width: 600px;
+	height: 400px;
+	background-color: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+}
+table {
+	width: 100%;
+	padding: 10px;
+}
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+input {
+	width: 80%;
+	height: 30px;
+	margin-top: 20px;
+	border: 2px solid black;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: #ffe9d6;
+}
+.amount-paid {
+	margin: 30px;
+}
+.amount-paid p {
+	font-size: 30px;
+	font-weight: 500;
+}
+.modal-button {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+.continue-button {
+	background-color: #ffe9d6;
+	width: 180px;
+	border-radius: 8px;
+	padding: 10px;
+	color: #000;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	margin: 5px;
+}
+.checkout-button {
+	background-color: #ff7a00;
+	width: 180px;
+	border-radius: 8px;
+	padding: 10px;
+	color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	margin: 5px;
 }
 
 /* Mobile Responsiveness */
