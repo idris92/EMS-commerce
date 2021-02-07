@@ -214,6 +214,8 @@ button {
 	display: flex;
 	justify-content: center;
 	padding-top: 20px;
+	display: none;
+	cursor: pointer;
 }
 .modal-content {
 	width: 600px;
