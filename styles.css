@@ -3,6 +3,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+*:focus{
+	outline: 0;
+}
 
 body {
 	background-color: #ffe9d6;
@@ -49,12 +52,13 @@ li:hover {
 }
 .cart-button img {
 	padding: 0 10px;
+	width: 55px;
 }
 .cart-button p {
 	color: white;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: 400;
-	font-size: 40px;
+	font-size: 30px;
 	padding: 0 10px;
 }
 
@@ -168,22 +172,22 @@ li:hover {
 	padding: 10px 0;
 }
 
-button {
+.button {
 	background-color: #ff7a00;
 	border: none;
 	width: 290px;
 	margin: 10px auto 85px;
 	border-radius: 12px;
-	padding: 15px;
+	padding: 15px 0px;
 }
 .items a {
 	color: #000;
 	font-size: 25px;
 	font-weight: 700;
 }
+
 .items a:hover {
 	color: rgba(255, 255, 255, 0.7);
-	font-size: 27px;
 }
 
 /* Footer section */
@@ -211,7 +215,6 @@ button {
 	background-color: rgba(0, 0, 0, 0.5);
 	position: absolute;
 	top: 0;
-	display: flex;
 	justify-content: center;
 	padding-top: 20px;
 	display: none;
@@ -220,9 +223,10 @@ button {
 .modal-content {
 	width: 600px;
 	height: 400px;
+	max-height: auto;
 	background-color: #fff;
 	border-radius: 10px;
-	overflow: hidden;
+	overflow:auto;
 }
 table {
 	width: 100%;
@@ -234,13 +238,43 @@ table {
 	align-items: center;
 	width: 100%;
 }
+.form div {
+	width: 100%;
+	position: relative;
+}
+
+.name .error-message {
+	position: absolute;
+	left: 75px;
+	justify-content: center;
+	color: red;
+	font-size: small;
+	visibility: hidden;
+}
+.email .error-message {
+	position: absolute;
+	left: 75px;
+	justify-content: center;
+	color: red;
+	font-size: small;
+	visibility: hidden;
+}
+.phone-number .error-message {
+	position: absolute;
+	left: 75px;
+	justify-content: center;
+	color: red;
+	font-size: small;
+	visibility: hidden;
+}
+
 input {
 	width: 80%;
 	height: 30px;
 	margin-top: 20px;
 	border: 2px solid black;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 15px;
 	background-color: #ffe9d6;
 }
 .amount-paid {
@@ -275,6 +309,37 @@ input {
 	margin: 5px;
 }
 
+/* cart input styling */
+
+
+.item-quantity{
+	width: 45px;
+	border: none;
+	background: #fff;
+	text-align: center;
+	margin: 8px;
+
+}
+
+.minus,
+.plus{
+	color: #fff;
+	background: #ff7a00;
+	border: none;
+	width: 28px;
+	border-radius: 10px;
+	padding: 5px;
+}
+.remove-cart{
+	color: #000;
+	background: #ffe9d6;
+	border: none;
+	border-radius: 10px;
+	padding: 8px;
+}
+
+
+
 /* Mobile Responsiveness */
 
 @media screen and (min-width: 375px) and (max-width: 744px) {
@@ -283,7 +348,10 @@ input {
 	}
 	.intro-body h1 {
 		text-align: center;
-		margin-top: 50px;
+		margin-top: 40px;
+	}
+	.shop-now {
+		width: 280px;
 	}
 	.items {
 		display: block;
@@ -292,7 +360,35 @@ input {
 		font-size: 40px;
 	}
 	.items img {
-		width: 400px;
+		width: 300px;
+	}
+	.brand-link {
+		display: flex;
+		justify-content: space-between;
+		overflow: hidden;
+	}
+	li {
+		list-style-type: none;
+		margin: 30px 20px;
+		font-size: 15px;
+	}
+
+	li:hover {
+		font-size: 16px;
+	}
+	.brand-link .logo {
+		visibility: hidden;
+		position: absolute;
+	}
+	.about p {
+		width: 90%;
+		margin: 35px auto 0;
+		padding: 60px 10px;
+		font-size: 25px;
+	}
+	.footer p {
+		font-size: 15px;
+		align-items: center;
 	}
 }
 

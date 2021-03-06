@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>E-Commerce Website</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
@@ -10,7 +11,7 @@
 
         <div class="intro">
             <div class="brand-link">
-                <img src="images/EMS.svg" alt="company-logo">
+                <img src="images/EMS.svg" alt="company-logo" class="logo">
                 <ul>
                     <a href="#"><li>Intro</li></a>
                     <a href="#About"><li>About</li></a>
@@ -53,66 +54,66 @@
                         <img src="images/product1.png"  alt="Samsung-image" class="samsung">
                         <div class="image-overlay">
                             <div class="image-title"><u>Price</u></div>
-                            <p class="samsung-price">#500,000</p>
+                            <p class="samsung-price">#50,000</p>
                         </div>
                     </div>
-                    <p class="item-name">SAMSUNG TV</p>
-                    <button><a href="">ADD TO CART</a></button>
+                    <p class="item-name" id="samsung">SAMSUNG TV</p>
+                    <div class="button"><a href="#" class="add-cart">ADD TO CART</a></div>
                 </div>
                 <div class="pixel">
                     <div class="product-overlay">
                         <img src="images/product2.png"  alt="pixel-image" class="pixel">
                         <div class="image-overlay">
                             <div class="image-title"><u>Price</u></div>
-                            <p class="pixel-price">#450,000</p>
+                            <p class="pixel-price">#45,000</p>
                         </div>
                     </div>
-                    <p class="item-name">PIXEL 4a</p>
-                    <button><a href="">ADD TO CART</a></button>
+                    <p class="item-name" id="pixel">PIXEL 4a</p>
+                    <div class="button"><a href="#" class="add-cart">ADD TO CART</a></div>
                 </div>
                 <div class="ps5">
                     <div class="product-overlay">
                         <img src="images/product3.png" alt="ps5-image" class="ps5">
                         <div class="image-overlay">
                             <div class="image-title"><u>Price</u></div>
-                            <p class="ps5-price">#650,000</p>
+                            <p class="ps5-price">#65,000</p>
                         </div>
                     </div>
-                    <p class="item-name">PS 5</p>
-                    <button><a href="">ADD TO CART</a></button>
+                    <p class="item-name" id="ps5">PS 5</p>
+                    <div class="button"><a href="" class="add-cart">ADD TO CART</a></div>
                 </div>
                 <div class="macbook">
                     <div class="product-overlay">
                         <img src="images/product4.png"  alt="macbook-image" class="macbook">
                         <div class="image-overlay">
                             <div class="image-title"><u>Price</u></div>
-                            <p class="macbook-price">#950,000</p>
+                            <p class="macbook-price">#95,000</p>
                         </div>
                     </div>
-                    <p>MACBOOK AIR</p>
-                    <button><a href="">ADD TO CART</a></button>
+                    <p class="item-name" id="macbook">MACBOOK AIR</p>
+                    <div class="button"><a href="#" class="add-cart">ADD TO CART</a></div>
                 </div>
                 <div class="apple-watch">
                     <div class="product-overlay">
                         <img src="images/product5.png" alt="appleWatch-image" class="apple-watch">
                         <div class="image-overlay">
                             <div class="image-title"><u>Price</u></div>
-                            <p class="apple-watch-price">#400,000</p>
+                            <p class="apple-watch-price">#40,000</p>
                         </div>
                     </div>
-                    <p class="item-name">APPLE WATCH</p>
-                    <button><a href="">ADD TO CART</a></button>
+                    <p class="item-name" id="apple-watch">APPLE WATCH</p>
+                    <div class="button"><a href="#" class="add-cart">ADD TO CART</a></div>
                 </div>
                 <div class="air-pods">
                     <div class="product-overlay">
                         <img src="images/product6.png" alt="airPod-image"class="air-pods">
                         <div class="image-overlay">
                             <div class="image-title"><u>Price</u></div>
-                            <p class="air-pods-price">#250,000</p>
+                            <p class="air-pods-price">#25,000</p>
                         </div>
                     </div>
-                    <p class="item-name">AIR PODS</p>
-                    <button><a href="">ADD TO CART</a></button>
+                    <p class="item-name" id="air-pod">AIR PODS</p>
+                    <div class="button"><a href="#" class="add-cart">ADD TO CART</a></div>
                 </div>
                 
             </div>
@@ -125,31 +126,66 @@
         </div>
 
         <!-- Modal Section -->
-        <div class="bg-modal">
+        <div class="bg-modal" id="modal">
             <div class="modal-content">
-                <table>
+                <!-- Items Section -->
+                <table id="table">
                     <tr>
                         <th>S/N</th>
                         <th>Item</th>
                         <th>Price</th>
                         <th>Quantity</th>
+                        <th></th>
                     </tr>
+                    
                 </table>
+                <!-- User details section -->
                 <form action="" class="form">
-                    <input type="text" placeholder="Your Name">
-                    <input type="email" placeholder="Your email">
-                    <input type="phone-number" placeholder="Your Phone Number">
+                    <div class="name">
+                        <input type="text" placeholder="Your Name" id="name" onfocusout='nameValidate();'>
+                        <p class="error-message" id="name-error"></p>
+                    </div>
+                    <div class="email">
+                        <input type="email" placeholder="Your email" id="email" onfocusout='emailValidate();'>
+                        <p class="error-message" id="email-error"></p>
+                    </div>
+                    <div class="phone-number">
+                        <input type="phone-number" placeholder="Your Phone Number" id="phone" onfocusout='phoneValidate();'>
+                        <p class="error-message" id="phone-error"></p>
+                    </div>
                 </form>
+                <!-- Amount Section -->
                 <div class="amount-paid">
                     <h3>Total Amount to be Paid</h3>
-                    <p>#0</p>
+                    <p class="total-cost" id='total'>#0</p>
                 </div>
+                <!-- Action Section -->
                 <div class="modal-button">
-                    <a href="" class="continue-button">Continue Shopping</a>
+                    <a href="#" class="continue-button" id="continue">Continue Shopping</a>
                     <a href="#" class="checkout-button">Checkout</a>
                 </div>
             </div>
         </div>
-        <script src="main.js"></script>
+
+
+        <!-- Summary Section -->
+
+        <div class="summary-section" id="summary">
+            <p class="confirmation message"></p>
+            <img src="images/check.svg">
+            <p class="summary">Summary</p>
+            <table id="summary-details">
+                <tr>
+                    <th>S/N</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                </tr>
+            </table>
+            <a href="#" class="ok-button">ok</a>
+        
+        </div>
+
+        <script src="main1.js" async></script>
+        <script src="https://js.paystack.co/v1/inline.js"></script> 
     </body>
 </html>
