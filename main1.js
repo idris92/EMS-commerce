@@ -382,6 +382,8 @@ function decreaseCount(){
 function summarySection(){
     let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
     let content = document.getElementById('summary-details');
+    let confirmation = document.getElementByClassName('confirmation message');
+    let customerName = document.getElementsById('name').value
     
     if (cartItems){
         Object.values(cartItems).map((item, index)=>{
@@ -389,16 +391,12 @@ function summarySection(){
         <tr class="contents" id="content">
         <td>${index += 1}</td>
         <td class="item-name">${item.name}</td>
-        <td class="item-price">#${item.price}</td>
+        <td class ="quantity">${item.inCart}</td>
         <td>
-        <button class="minus"> - </button>
-        <input type="text" id="quantity"  class="item-quantity" value=${item.inCart}>
-        <button class="plus"> + </button>
-        </td>
-        <td><button class="remove-cart">Remove</button></td>
         </tr>
         `
-        
+        confirmation.innerHTML = `Thank You, ${customerName}, Your order has been received `;
+
        });
 
     }
@@ -412,12 +410,43 @@ function checkOut(){
     let email = document.getElementById("email").value
     let name = document.getElementById("name").value
     let phone = document.getElementById("phone").value
-    checked.addEventListener('click',payWithPaystack)
+    checked.addEventListener('click',()=>{
+            productSummary();
+    });
         
         
     }
     
+// product summary 
 
+function productSummary(){
+    let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
+    let content = document.querySelector('#summary-details');
+    document.querySelector('.summary-section').style.display='flex';
+    document.querySelector('.bg-modal').style.display='none';
+    let customerName = document.querySelector('#name').value;
+    document.querySelector('.customer-name').innerHTML= customerName;
+
+    if (cartItems){
+        Object.values(cartItems).map((item, index)=>{
+        content.innerHTML += `
+        <tr class="contents" id="content">
+        <td>${index += 1}</td>
+        <td class="item-name">${item.name}</td>
+        <td class ="quantity">${item.inCart}</td>
+        <td>
+        </tr>
+        `
+        });
+
+    }
+    document.querySelector('.ok-button').addEventListener('click', ()=>{
+        document.querySelector('.summary-section').style.display='none';
+        localStorage.clear();
+        window.location.reload();
+    });
+    
+}
 
 
 
@@ -434,8 +463,9 @@ function payWithPaystack() {
         alert('Window closed.');
       },
       callback: function(response){
-        let message = 'Payment complete! Reference: ' + response.reference;
-        alert(message);
+        // let message = 'Payment complete! Reference: ' + response.reference;
+        // alert(message);
+        summarySection();
       }
     });
     handler.openIframe();
