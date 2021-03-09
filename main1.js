@@ -406,12 +406,42 @@ function summarySection(){
 
 function checkOut(){
     let checked = document.querySelector('.checkout-button');
-    let items = document.querySelector('.contents');
-    let email = document.getElementById("email").value
-    let name = document.getElementById("name").value
-    let phone = document.getElementById("phone").value
+    let items = localStorage.getItem('productsInCart');
+    let email = document.getElementById("email")
+    let name = document.getElementById("name")
+    let phone = document.getElementById("phone")
     checked.addEventListener('click',()=>{
+        let nameValue = name.value;
+        let emailValue = email.value;
+        let phoneValue = phone.value;
+    
+        if (nameValue.length < 3){
+            alert('Please Input your name');
+        }else if (emailValue.length == 0){
+            alert('Please Input your Email');
+        }else if(phoneValue.length == 0){
+            alert('Please input your Phone Number')
+        }else if(items === null){
+            alert ('Cart cannot be empty');
+        }
+        else{
             productSummary();
+        }
+        // console.log(nameValue.length)
+        // if (name.length <= 0){
+        //     alert('please input your name');
+        //     nameValidate();
+        //     return
+        // }
+        // else if (name.length > 0){
+        //     productSummary();
+        // }
+        
+            // emailValidate();
+            // phoneValidate();
+            // productSummary();
+            // nameValidate();
+            
     });
         
         
