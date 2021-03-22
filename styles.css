@@ -447,6 +447,13 @@ input {
 		font-size: 15px;
 		align-items: center;
 	}
+	.item-quantity{
+		width: 15px;
+		padding:0;
+		margin:0;
+	}
+}
+	
 }
 
 @media all and (min-width: 745px) and (max-width: 1065px) {
@@ -461,4 +468,4 @@ input {
 		display: grid;
 		grid-template-columns: repeat(2, 200px);
 	}
-}
+	

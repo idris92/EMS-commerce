@@ -216,7 +216,7 @@ const handleBtn = (btn, cart, product) => {
     if (myBtn.innerHTML.replace(/\s+/g, "") === "ADDTOCART") {
         setItems(product)
       myBtn.innerHTML = "REMOVE FROM CART";
-      
+
       handleStorageUpdate({ btnId: btn, name: "REMOVE FROM CART" });
     } else {
         deleteFromOutside(cart);
@@ -306,12 +306,12 @@ function displayCart(){
         <td>${index += 1}</td>
         <td class="item-name">${item.name}</td>
         <td class="item-price">#${item.price}</td>
-        <td>
+        <td class ="add-minus">
         <button class="minus"> - </button>
         <input type="text"   class="item-quantity" value=${item.inCart}>
         <button class="plus"> + </button>
         </td>
-        <td><button class="remove-cart" )'>Remove</button></td>
+        <td><button class="remove-cart">Remove</button></td>
         </tr>
         `
         
