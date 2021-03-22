@@ -454,7 +454,6 @@ input {
 	}
 }
 	
-}
 
 @media all and (min-width: 745px) and (max-width: 1065px) {
 	.intro-body {
@@ -469,3 +468,4 @@ input {
 		grid-template-columns: repeat(2, 200px);
 	}
 	
+}
