@@ -5,9 +5,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // Check if button array is not empty and update button state
     if (btnNames?.length > 0)
       btnNames.map((btnName) => {
-        const { name, btnId, attr } = btnName;
+        const { name, btnId } = btnName;
         document.getElementById(btnId).innerHTML = name;
-        document.getElementById(btnId).classList.add(attr);
       });
   });
 
@@ -112,43 +111,37 @@ let products=[
         name:'Samsung Tv',
         price: 50000,
         tag: 'Samsungtv',
-        inCart: 0,
-        id: 'id1'
+        inCart: 0
     },
     {
         name:'Pixel 4a',
         price: 45000,
         tag: 'pixel',
-        inCart: 0,
-        id: 'id2'
+        inCart: 0
     },
     {
-        name:'Ps 5',
+        name:'Ps5',
         price: 65000,
         tag: 'Ps5',
-        inCart: 0,
-        id: 'id3'
+        inCart: 0
     },
     {
         name:'Macbook Air',
         price: 95000,
         tag: 'Macbook',
-        inCart: 0,
-        id: 'id4'
+        inCart: 0
     },
     {
         name:'Apple Watch',
         price: 40000,
         tag: 'Apple',
-        inCart: 0,
-        id: 'id5'
+        inCart: 0
     },
     {
         name:'Airpods',
         price: 25000, 
         tag: 'Airpod',
-        inCart: 0,
-        id: 'id6'
+        inCart: 0
     }
 ];
 
@@ -162,9 +155,7 @@ for (let i=0; i<carts.length; i++){
     carts[i].addEventListener('click',(e)=>{  
         e.preventDefault(); 
         let btnId = carts[i].attributes.id.value; 
-        setItems(products[i])
-        delete2(products[i])
-        handleBtn(btnId,products[i])
+        handleBtn(btnId, carts[i],products[i])
         cartNumber();
       
                
@@ -198,7 +189,6 @@ function setItems(product){
                 [product.name]: product
             }
 
-            // Perform button mutation here
             
         }else{
             return;
@@ -211,7 +201,6 @@ function setItems(product){
             [product.name]: product 
         }
             
-         // Perform button mutation here   
     
     }
    
@@ -219,35 +208,47 @@ function setItems(product){
 }
 
 
-function delete2(product){
-    let storage = JSON.parse(localStorage.getItem('productsInCart'));
-    console.log(product.name)
-    
-}
-
-
-
-
 // handle button Click
-const handleBtn = (btn, product) => {
+const handleBtn = (btn, cart, product) => {
     // Get the ID of the button being cliked
     let myBtn = document.getElementById(btn);
 
     if (myBtn.innerHTML.replace(/\s+/g, "") === "ADDTOCART") {
-        // setItems(product);
+        setItems(product)
       myBtn.innerHTML = "REMOVE FROM CART";
-      myBtn.attributes.class = 'remove-cart'
-      handleStorageUpdate({ btnId: btn, name: "REMOVE FROM CART", attr: 'remove-cart'});
+      
+      handleStorageUpdate({ btnId: btn, name: "REMOVE FROM CART" });
     } else {
-       delItem();
-      myBtn.innerHTML = "ADD TO CART";
-      myBtn.attributes.class = 'add-cart'
-      handleStorageUpdate({ btnId: btn, name: "ADD TO CART",attr: 'add-cart' });
+        deleteFromOutside(cart);
+        myBtn.innerHTML = "ADD TO CART";
+        handleStorageUpdate({ btnId: btn, name: "ADD TO CART" });
     }
   };
 
 
-// Handle Butoon mutation
+//Handle delete from Outside the cart
+function deleteFromOutside(product){
+    let itemInCart = JSON.parse(localStorage.getItem('productsInCart'));
+    let buttonProductName= product.parentElement.parentElement.children[1].innerHTML;
+    buttonProductName = buttonProductName.replace(' ', '');
+    let keys = Object.keys(itemInCart);
+    for (i = 0; i < keys.length; i++){
+       let localName = (itemInCart[keys[i]].name)
+       localName = localName.toLowerCase();
+       localName = localName.replace(' ','');
+       buttonProductName = buttonProductName.toLowerCase();
+      if (localName === buttonProductName){
+        delete (itemInCart[keys[i]]);
+        localStorage.setItem('productsInCart',JSON.stringify(itemInCart));
+
+      }
+       
+    }
+}
+
+
+
+// Handle Butoon mutatio
 const handleStorageUpdate = (newBtn) => {
     const arrayExist = JSON.parse(localStorage.getItem("btnArray"));
 
@@ -273,10 +274,6 @@ const handleStorageUpdate = (newBtn) => {
       localStorage.setItem("btnArray", JSON.stringify(newBtnArray));
     }
   };
-
-
-
-
 
 //load the cart
 let cartButton =document.querySelector('.cart-button');
@@ -311,7 +308,7 @@ function displayCart(){
         <td class="item-price">#${item.price}</td>
         <td>
         <button class="minus"> - </button>
-        <input type="text" id="quantity"  class="item-quantity" value=${item.inCart}>
+        <input type="text"   class="item-quantity" value=${item.inCart}>
         <button class="plus"> + </button>
         </td>
         <td><button class="remove-cart" )'>Remove</button></td>
@@ -335,8 +332,7 @@ function displayCart(){
 }
 
 
-
-
+// update the item total
 
 function updateTotal(){
     
@@ -358,17 +354,22 @@ function updateTotal(){
 }
 
 
+
+
+
+
 //deleting item from cart
 
 
 function delItem(){
         let delButton = document.querySelectorAll('.remove-cart');
+        // let addToCart = document.querySelectorAll('.add-cart');
             for (let i = 0; i < delButton.length; i++){
             let button = delButton[i];
             button.addEventListener('click', (event)=>{
                 let counter = JSON.parse(localStorage.getItem('cartNumbers'));
                 let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
-                let input = event.target.parentElement.parentElement.children[1];
+                let input = event.target.parentElement.parentElement.children[1];//.remove()
                 let inputValue = input.innerHTML;
                 // console.log(inputValue);
                 items = Object.keys(cartItems);
@@ -384,7 +385,9 @@ function delItem(){
                         localStorage.setItem('productsInCart', cartItems);
 
             updateTotal();
-            cartNumber()
+            cartNumber();
+            changeButton(event);
+            
             
         }
     }
@@ -396,6 +399,27 @@ function delItem(){
     
 }
 
+
+
+function changeButton(event){
+    let homeButton = document.querySelectorAll('.item-name');
+    let cartButton = event.target.parentElement.parentElement.children[1].innerHTML;
+    for (i = 0; i < homeButton.length; i++){
+        let newHomeButton = homeButton[i].innerHTML;
+        newHomeButton = newHomeButton.toLowerCase();
+        newHomeButton = newHomeButton.replace(' ','')
+        cartButton = cartButton.toLowerCase();
+        cartButton = cartButton.replace(' ', '');
+
+        if (newHomeButton === cartButton){
+            let buttonClicked = homeButton[i].parentElement.children[2].children[0];
+            let buttonId = buttonClicked.attributes.id.value;
+            buttonClicked.innerHTML = "ADD TO CART";
+            handleStorageUpdate({ btnId: buttonId, name: "ADD TO CART" });
+        }
+    }
+    
+}
 
 //increase count
 
