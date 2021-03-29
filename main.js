@@ -269,9 +269,7 @@ function displayCart() {
         <td class="item-price">#${item.price}</td>
         <td>
         <button class="minus"> - </button>
-        <input type="text" id="quantity"  class="item-quantity" value=${
-          item.inCart
-        }>
+        <input type="text" id="quantity"  class="item-quantity" value=${item.inCart}>
         <button class="plus"> + </button>
         </td>
         <td><button class="remove-cart">Remove</button></td>
