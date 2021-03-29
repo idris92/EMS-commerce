@@ -413,6 +413,19 @@ input {
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.cart-button {
+  display: flex;
+  width: 5rem;
+  padding: 0;
+}
+.cart-button img {
+  padding: 0 6px;
+  width: 2.8rem;
+}
+.cart-button p {
+  padding: 0 5px;
+}
+
 /* Mobile Responsiveness */
 
 @media screen and (max-width: 744px) {
