@@ -401,7 +401,7 @@ function checkProduct() {
     alert("Cart items cannot be empty");
   } else {
     // document.getElementById("summary").style.display = "flex";
-    // document.getElementById("summary2").style.display = "none";
+    document.getElementById("modal").style.display = "none";
     payWithPaystack();
   }
 }
